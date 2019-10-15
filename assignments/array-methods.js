@@ -58,28 +58,58 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+runners.forEach( person => {
+  fullNames.push(person.first_name + " " + person.last_name );
+});
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
 let firstNamesAllCaps = [];
+firstNamesAllCaps = runners.map( person => person.first_name.toUpperCase());
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
+runnersLargeSizeShirt = runners.filter(person => person.shirt_size === "L");
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
 let ticketPriceTotal = 0;
+ticketPriceTotal = runners.reduce((acc, person) => { 
+  return acc + person.donation;
+},0);
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// Count t-shirts by size to order
+let shirtXS = runners.filter(person => person.shirt_size === "XS");
+console.log(shirtXS.length);
+let shirtS = runners.filter(person => person.shirt_size === "S");
+console.log(shirtS.length);
+let shirtM = runners.filter(person => person.shirt_size === "M");
+console.log(shirtM.length);
+let shirtL = runners.filter(person => person.shirt_size === "L");
+console.log(shirtL.length);
+let shirtXL = runners.filter(person => person.shirt_size === "XL");
+console.log(shirtXL.length);
 
 // Problem 2
+// Create tag names which specify first name last name and company
+let tagnames = [];
+runners.forEach( person => {
+  tagnames.push(person.first_name + " " + person.last_name + " from " + person.company_name);
+});
+console.log(tagnames);
 
 // Problem 3
+// Filter people who have given more than 200 dollars
+let donors200 = [];
+donors200 = runners.filter(person => person.donation > 200);
+console.log(donors200);
+console.log(donors200.length);
