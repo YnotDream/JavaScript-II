@@ -1,6 +1,6 @@
 // Create a higher order function and invoke the callback function to test your work. You have been provided an example of a problem and a solution to see how this works with our items array.  Study both the problem and the solution to figure out the rest of the problems.
 
-const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
+const items = ["Pencil", "Notebook", "yo-yo", "Gum"];
 
 /* 
 
@@ -38,10 +38,9 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   console.log(test2); // "this Pencil is worth a million dollars!"
 */
 
-
 function getLength(arr, cb) {
   // getLength passes the length of the array into the callback.
-return cb(arr.length);
+  return cb(arr.length);
 }
 
 // Test
@@ -50,7 +49,7 @@ console.log(itemLength);
 
 function last(arr, cb) {
   // last passes the last item of the array into the callback.
-return cb(arr[arr.length-1]);
+  return cb(arr[arr.length - 1]);
 }
 
 // Test
@@ -59,32 +58,40 @@ console.log(lastItem);
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
-  return cb(x+y);
+  return cb(x + y);
 }
 
 // Test
-let addition = sumNums(2,3, sum => `Those 2 numbers sum up to ${sum}`)
+let addition = sumNums(2, 3, sum => `Those 2 numbers sum up to ${sum}`);
 console.log(addition);
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
-return cb (x*y);
+  return cb(x * y);
 }
 
 // Test
-let multiplication = multiplyNums(2,3, multiply => `When multiplied by each other, those 2 numbers add up to ${multiply}`);
+let multiplication = multiplyNums(
+  2,
+  3,
+  multiply =>
+    `When multiplied by each other, those 2 numbers add up to ${multiply}`
+);
 console.log(multiplication);
 
 function contains(item, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
-  return cb (list.some(currentItem => currentItem === item));
+  return cb(list.some(currentItem => currentItem === item));
 }
 
 // Test
-let check = contains("Pencil",items, result => `Present inside list: ${result}`);
+let check = contains(
+  "Pencil",
+  items,
+  result => `Present inside list: ${result}`
+);
 console.log(check);
-
 
 /* STRETCH PROBLEM */
 
@@ -92,5 +99,17 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
-
+  uniq = [...new Set(array)];
+  return cb(uniq);
 }
+
+// Test
+
+const duplicate = ["Pencil", "Notebook", "yo-yo", "Gum", "Pencil"];
+
+let uniqArray = [];
+uniqArray = removeDuplicates(duplicate, result => result.length);
+console.log(uniqArray);
+
+
+
