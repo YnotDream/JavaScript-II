@@ -87,7 +87,29 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// Count t-shirts by size to order
+let shirtXS = runners.filter(person => person.shirt_size === "XS");
+console.log(shirtXS.length);
+let shirtS = runners.filter(person => person.shirt_size === "S");
+console.log(shirtS.length);
+let shirtM = runners.filter(person => person.shirt_size === "M");
+console.log(shirtM.length);
+let shirtL = runners.filter(person => person.shirt_size === "L");
+console.log(shirtL.length);
+let shirtXL = runners.filter(person => person.shirt_size === "XL");
+console.log(shirtXL.length);
 
 // Problem 2
+// Create tag names which specify first name last name and company
+let tagnames = [];
+runners.forEach( person => {
+  tagnames.push(person.first_name + " " + person.last_name + " from " + person.company_name);
+});
+console.log(tagnames);
 
 // Problem 3
+// Filter people who have given more than 200 dollars
+let donors200 = [];
+donors200 = runners.filter(person => person.donation > 200);
+console.log(donors200);
+console.log(donors200.length);
